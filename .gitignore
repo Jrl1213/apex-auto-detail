@@ -1,0 +1,35 @@
+# Dependencies and generated output
+/node_modules/
+/.next/
+/out/
+/build/
+/dist/
+/coverage/
+/.turbo/
+/.vercel/
+next-env.d.ts
+*.tsbuildinfo
+
+# Local environment and runtime files
+.env
+.env.*
+!.env.example
+*.log
+*.pid
+*.tmp
+*.temp
+/tmp/
+/temp/
+
+# Editor and OS files
+/.vscode/
+/.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Historical local audit; refresh before publishing it
+/AUDIT.md
