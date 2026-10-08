@@ -37,6 +37,10 @@ export const services = [
   {
     number: "01",
     name: "Exterior Detailing",
+    icon: "exterior",
+    image: "/images/service-exterior.webp",
+    imageAlt:
+      "Generated demo visual of an alloy wheel being carefully cleaned with a detailing brush",
     description:
       "A careful wash, decontamination and finishing process that restores clarity and leaves your paint feeling clean.",
     detail: "Wash · decontaminate · protect",
@@ -44,6 +48,10 @@ export const services = [
   {
     number: "02",
     name: "Interior Detailing",
+    icon: "interior",
+    image: "/images/service-interior.webp",
+    imageAlt:
+      "Generated demo visual of a leather car seat being cleaned with a vacuum nozzle",
     description:
       "A thorough reset for the cabin, from hard-to-reach trim to seats, carpets and high-touch surfaces.",
     detail: "Deep clean · refresh · finish",
@@ -51,6 +59,10 @@ export const services = [
   {
     number: "03",
     name: "Paint Correction",
+    icon: "correction",
+    image: "/images/service-correction.webp",
+    imageAlt:
+      "Generated demo visual of a machine polisher refining a dark grey car's paint",
     description:
       "Machine polishing tailored to your paint, designed to reduce visible swirls and improve depth and gloss.",
     detail: "Inspect · refine · restore",
@@ -58,6 +70,10 @@ export const services = [
   {
     number: "04",
     name: "Ceramic Coating",
+    icon: "coating",
+    image: "/images/service-coating.webp",
+    imageAlt:
+      "Generated demo visual of water beading on a glossy dark grey car hood",
     description:
       "A durable protective finish applied after proper preparation, making routine care more straightforward.",
     detail: "Prepare · coat · maintain",

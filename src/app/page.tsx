@@ -2,6 +2,7 @@ import Image from "next/image";
 import { Brand } from "@/components/brand";
 import { ComparisonSlider } from "@/components/comparison-slider";
 import { SiteHeader } from "@/components/site-header";
+import { ServiceIcon } from "@/components/service-icon";
 import {
   business,
   directionsUrl,
@@ -98,10 +99,20 @@ export default function Home() {
                   <div className="service-top">
                     <span>{service.number} / 04</span>
                     <span className="service-icon" aria-hidden="true">
-                      ↗
+                      <ServiceIcon name={service.icon} />
                     </span>
                   </div>
-                  <div>
+                  <div className="service-media">
+                    <Image
+                      src={service.image}
+                      alt={service.imageAlt}
+                      fill
+                      sizes="(max-width: 600px) calc(100vw - 88px), (max-width: 850px) calc((100vw - 158px) / 2), (max-width: 1100px) calc((100vw - 190px) / 2), (max-width: 1520px) calc((100vw - 298px) / 4), 306px"
+                      className="service-image"
+                    />
+                    <span className="service-image-label">Demo visual</span>
+                  </div>
+                  <div className="service-copy">
                     <h3>{service.name}</h3>
                     <p>{service.description}</p>
                   </div>
@@ -109,6 +120,9 @@ export default function Home() {
                 </article>
               ))}
             </div>
+            <p className="service-visual-note">
+              Generated demo visuals for illustration; not customer work.
+            </p>
           </div>
         </section>
 
