@@ -1,8 +1,8 @@
 # Service demo imagery
 
-Generated with the built-in image-generation tool for this fictional website.
-The four selected assets are optimized WebP files in `public/images/`.
-They are illustrative generated scenes, not photographs of customer work.
+I used generated imagery for this fictional website, with Codex handling image generation and optimization. The four selected assets are WebP files in `public/images/`. I have kept them labelled as demo visuals because they are generated scenes, not photographs of customer work.
+
+The prompts below record the instructions used to generate each service image.
 
 ## exterior
 
