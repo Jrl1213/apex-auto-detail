@@ -1,14 +1,26 @@
 # APEX Auto Detail
 
-A responsive, single-page website for a **fictional Malaysian automotive detailing studio**. This is a small-business design demo, not an operating business; its contact details, prices, reviews, and imagery are illustrative.
+A small-business website concept for a **fictional Malaysian automotive detailing studio**, built with Next.js, React, and TypeScript. The project explores how a clear service overview, considered visuals, and comfortable mobile interactions can bring a business idea to life.
 
-## Features and stack
+[Visit the live demo](https://apex-auto-detail-demo.netlify.app/) · [Read the project story](docs/case-study.md)
 
-- Service and package sections, FAQs, and a keyboard-accessible before/after slider
-- Responsive mobile navigation, WhatsApp quote links, and Google Maps directions from the configured address
-- Next.js 16 App Router, React 19, TypeScript, CSS, and local images served with `next/image`
+![APEX homepage on desktop, with a dark studio photograph and warm gold accents](docs/screenshots/desktop-home.jpg)
 
-There is no backend, booking system, or analytics integration.
+## What you can explore
+
+- Four service categories with matching imagery and icons
+- Sample packages in Malaysian ringgit, FAQs, and studio information
+- An interactive before/after comparison with touch, mouse, and keyboard controls
+- Responsive navigation with keyboard focus and Escape support
+- WhatsApp links with prepared quote messages and a Maps link based on the configured address
+
+This is a presentation demo, not an operating business. Business details, prices, reviews, and generated imagery are labelled as samples. The WhatsApp number and address are placeholders; quote links do not represent a real booking service. Search indexing remains disabled with `noindex, nofollow`.
+
+## How it was made
+
+Jarrell guided the project, gathered feedback, reviewed the design, and tested it on a laptop and a Xiaomi 12T Pro. Codex assisted with design, implementation, generated imagery, and technical checks. The [case study](docs/case-study.md) describes that collaboration and the mobile scrolling issue that shaped the final slider.
+
+The site uses Next.js 16 App Router, React 19, TypeScript, CSS, and local images served through `next/image`. It is hosted on Netlify with automatic deployment from GitHub. There is no backend, booking system, or analytics integration.
 
 ## Run locally
 
@@ -17,10 +29,30 @@ npm ci
 npm run dev
 ```
 
-Open `http://localhost:3000`. Run `npm run typecheck` and `npm run build` for production checks; `npm run start` serves the build locally.
+Open `http://localhost:3000`.
+
+```bash
+npm run typecheck
+npm run build
+npm run start
+```
+
+The last command serves the production build locally.
+
+## Project files
+
+| Location                 | Purpose                                                     |
+| ------------------------ | ----------------------------------------------------------- |
+| `src/app/`               | Page layout, styles, and metadata                           |
+| `src/components/`        | Navigation, branding, icons, and comparison slider          |
+| `src/config/business.ts` | Business details, packages, FAQs, reviews, and quote links  |
+| `public/images/`         | Images used by the website                                  |
+| `docs/`                  | Case study, selected screenshots, and service image prompts |
+
+Dependencies, build output, environment files, logs, and the local audit are excluded from Git. The screenshots in `docs/screenshots/` are a small selection captured from the published demo.
 
 ## Configuration and real-world use
 
-Business details, packages, FAQs, reviews, and WhatsApp link generation live in `src/config/business.ts`. Page copy and metadata live in `src/app/page.tsx` and `src/app/layout.tsx`; generated demo images live in `public/images/`.
+Update business content in `src/config/business.ts`, page copy in `src/app/page.tsx`, and metadata in `src/app/layout.tsx`. The [service image prompts](docs/service-image-prompts.md) document the four generated service visuals.
 
-Before using this for a real business, verify and replace the placeholder WhatsApp number and active quote links, fictional address and hours, sample prices, fictional reviews, and generated images. Use licensed or permissioned customer material, update the related disclaimers and metadata, and remove the demo `noindex, nofollow` setting only when the real details are ready. The directions link automatically uses the configured address.
+Before adapting the site for a real business, verify and replace the sample contact details, address, hours, prices, reviews, and imagery. Use licensed or permissioned customer material, update the disclosures and metadata, and remove `noindex, nofollow` only when the real details are ready.
