@@ -28,7 +28,11 @@ export function quoteMessage(service = "") {
 }
 
 export function whatsAppUrl(service = "") {
-  return `https://wa.me/${business.whatsAppNumber}?text=${encodeURIComponent(quoteMessage(service))}`;
+  return whatsAppMessageUrl(quoteMessage(service));
+}
+
+export function whatsAppMessageUrl(message: string) {
+  return `https://wa.me/${business.whatsAppNumber}?text=${encodeURIComponent(message)}`;
 }
 
 export const directionsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(business.address)}`;
@@ -126,23 +130,18 @@ export const packages = [
 export const reasons = [
   {
     number: "01",
-    title: "Time for the details",
-    text: "We work by appointment so each vehicle gets a focused, unhurried process.",
+    title: "Assess Before We Recommend",
+    text: "We consider your car's condition and your goals before recommending a suitable service.",
   },
   {
     number: "02",
-    title: "The right recommendation",
-    text: "We explain what your car needs, what can wait, and what a service can realistically achieve.",
+    title: "Care in Every Detail",
+    text: "From preparation to the finishing touches, every step has a purpose.",
   },
   {
     number: "03",
-    title: "Products with purpose",
-    text: "Our methods and products are chosen for the surface and the result, not for a flashy label.",
-  },
-  {
-    number: "04",
-    title: "Care beyond collection",
-    text: "You leave with simple aftercare advice to help keep the finish looking good.",
+    title: "Care Beyond the Finish",
+    text: "We help you understand what to expect and how to maintain your car after detailing.",
   },
 ] as const;
 

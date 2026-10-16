@@ -3,6 +3,7 @@ import { Brand } from "@/components/brand";
 import { ComparisonSlider } from "@/components/comparison-slider";
 import { SiteHeader } from "@/components/site-header";
 import { ServiceIcon } from "@/components/service-icon";
+import { QuoteForm } from "@/components/quote-form";
 import {
   business,
   directionsUrl,
@@ -47,12 +48,7 @@ export default function Home() {
               and enjoy every drive.
             </p>
             <div className="hero-actions">
-              <a
-                className="button button-primary"
-                href={whatsAppUrl()}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <a className="button button-primary" href="#quote-form">
                 Get a quote <Arrow diagonal />
               </a>
               <a className="button button-outline" href="#packages">
@@ -213,9 +209,9 @@ export default function Home() {
                       href={whatsAppUrl(item.name)}
                       target="_blank"
                       rel="noopener noreferrer"
-                      aria-label={`Request a quote for ${item.name}`}
+                      aria-label={`Request a WhatsApp quote for ${item.name}`}
                     >
-                      Request quote <Arrow diagonal />
+                      WhatsApp quote <Arrow diagonal />
                     </a>
                   </div>
                 </article>
@@ -240,13 +236,13 @@ export default function Home() {
                 <span className="eyebrow-line" /> Why APEX
               </p>
               <h2 id="about-title">
-                Good work
-                <br />
-                shows in the <em>details.</em>
+                Good detailing starts with <em>understanding your car.</em>
               </h2>
               <p>
-                We believe the best result comes from careful prep, clear
-                expectations and the time to do the job properly.
+                Every car is different. From daily drives to weekend favourites,
+                we believe the right care begins with understanding your
+                car&apos;s condition, how you use it, and what matters most to
+                you.
               </p>
             </div>
             <div className="reasons-list">
@@ -327,37 +323,38 @@ export default function Home() {
               >
                 Get directions <Arrow diagonal />
               </a>
+              <div className="contact-panel">
+                <div>
+                  <span className="contact-label">Studio address</span>
+                  <address>{business.address}</address>
+                  <small>{business.addressNote}</small>
+                </div>
+                <div>
+                  <span className="contact-label">Opening hours</span>
+                  <dl>
+                    {business.hours.map((entry) => (
+                      <div key={entry.days}>
+                        <dt>{entry.days}</dt>
+                        <dd>{entry.time}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                </div>
+                <div>
+                  <span className="contact-label">WhatsApp</span>
+                  <a
+                    className="contact-phone"
+                    href={whatsAppUrl()}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {business.whatsAppDisplay} <Arrow diagonal />
+                  </a>
+                  <small>{business.whatsAppNote}</small>
+                </div>
+              </div>
             </div>
-            <div className="contact-panel">
-              <div>
-                <span className="contact-label">Studio address</span>
-                <address>{business.address}</address>
-                <small>{business.addressNote}</small>
-              </div>
-              <div>
-                <span className="contact-label">Opening hours</span>
-                <dl>
-                  {business.hours.map((entry) => (
-                    <div key={entry.days}>
-                      <dt>{entry.days}</dt>
-                      <dd>{entry.time}</dd>
-                    </div>
-                  ))}
-                </dl>
-              </div>
-              <div>
-                <span className="contact-label">WhatsApp</span>
-                <a
-                  className="contact-phone"
-                  href={whatsAppUrl()}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {business.whatsAppDisplay} <Arrow diagonal />
-                </a>
-                <small>{business.whatsAppNote}</small>
-              </div>
-            </div>
+            <QuoteForm />
           </div>
         </section>
 
@@ -407,13 +404,8 @@ export default function Home() {
                 preferred date. We’ll take it from there.
               </p>
             </div>
-            <a
-              className="button button-primary cta-button"
-              href={whatsAppUrl()}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Request a quote on WhatsApp <Arrow diagonal />
+            <a className="button button-primary cta-button" href="#quote-form">
+              Get a quote <Arrow diagonal />
             </a>
           </div>
         </section>

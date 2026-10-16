@@ -48,12 +48,7 @@ export function SiteHeader() {
             </a>
           ))}
         </nav>
-        <a
-          className="button button-header"
-          href={whatsAppUrl()}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <a className="button button-header" href="#quote-form">
           Get a quote <span aria-hidden="true">↗</span>
         </a>
         <button
@@ -83,12 +78,19 @@ export function SiteHeader() {
         ))}
         <a
           className="mobile-quote"
+          href="#quote-form"
+          onClick={() => setOpen(false)}
+        >
+          Get a quote <span aria-hidden="true">↗</span>
+        </a>
+        <a
+          className="mobile-whatsapp"
           href={whatsAppUrl()}
           target="_blank"
           rel="noopener noreferrer"
           onClick={() => setOpen(false)}
         >
-          Get a quote on WhatsApp <span aria-hidden="true">↗</span>
+          Chat on WhatsApp <span aria-hidden="true">↗</span>
         </a>
       </nav>
     </header>
