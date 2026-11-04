@@ -7,7 +7,7 @@ export const business = {
   address:
     "Unit 12, Jalan Contoh 3, Sample Industrial Park, 46000 Petaling Jaya, Selangor",
   addressNote: "Fictional sample address — replace before launch.",
-  whatsAppNumber: "60187783182", // Jarrell's own number, so demo enquiries reach the designer.
+  whatsAppNumber: "60187783182", // My own number, so demo enquiries reach me. Replace it for a real studio.
   whatsAppDisplay: "+60 18-778 3182",
   whatsAppNote: "Demo site by Jarrell — messages reach me directly.",
   hours: [
