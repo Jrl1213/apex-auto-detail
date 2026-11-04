@@ -7,9 +7,9 @@ export const business = {
   address:
     "Unit 12, Jalan Contoh 3, Sample Industrial Park, 46000 Petaling Jaya, Selangor",
   addressNote: "Fictional sample address — replace before launch.",
-  whatsAppNumber: "60123456789", // Placeholder only. Replace before launch.
-  whatsAppDisplay: "+60 12-345 6789",
-  whatsAppNote: "Demo WhatsApp number — replace before launch.",
+  whatsAppNumber: "60187783182", // My own number, so demo enquiries reach me. Replace it for a real studio.
+  whatsAppDisplay: "+60 18-778 3182",
+  whatsAppNote: "Demo site by Jarrell — messages reach me directly.",
   hours: [
     { days: "Monday – Friday", time: "9:00 am – 6:00 pm" },
     { days: "Saturday", time: "9:00 am – 5:00 pm" },

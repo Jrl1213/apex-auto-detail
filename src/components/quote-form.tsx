@@ -165,8 +165,8 @@ export function QuoteForm() {
           Continue to WhatsApp <span aria-hidden="true">↗</span>
         </button>
         <p>
-          Demo WhatsApp number. Review your draft before sending; nothing is
-          sent automatically.
+          Messages reach Jarrell, who built this demo. Review your draft before
+          sending; nothing is sent automatically.
         </p>
         <noscript>
           <p>
