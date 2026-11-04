@@ -1,0 +1,28 @@
+# Runs the same checks I run before a release, on every pull request
+# into develop or main, so a broken change shows a red cross before merging.
+name: CI
+
+on:
+  pull_request:
+    branches: [develop, main]
+  push:
+    branches: [develop, main]
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    name: Typecheck, format and build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npx prettier --check src
+      - run: npm run build
