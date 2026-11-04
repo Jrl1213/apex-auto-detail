@@ -1,10 +1,92 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
 export function ComparisonSlider() {
   const [position, setPosition] = useState(50);
+  const stageRef = useRef<HTMLDivElement>(null);
+  const frameRef = useRef<number | null>(null);
+  const demoPlayed = useRef(false);
+  const hasInteracted = useRef(false);
+
+  function cancelDemo() {
+    hasInteracted.current = true;
+    if (frameRef.current !== null) {
+      cancelAnimationFrame(frameRef.current);
+      frameRef.current = null;
+    }
+  }
+
+  useEffect(() => {
+    const stage = stageRef.current;
+    const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    if (!stage || motion.matches || demoPlayed.current) return;
+
+    let disposed = false;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting || entry.intersectionRatio < 0.5) return;
+        observer.disconnect();
+        if (hasInteracted.current || demoPlayed.current) return;
+        demoPlayed.current = true;
+
+        // Show the demonstration only once both image layers can be painted.
+        void Promise.all(
+          Array.from(stage.querySelectorAll("img"), (image) =>
+            image.decode().catch(() => undefined),
+          ),
+        ).then(() => {
+          if (
+            disposed ||
+            hasInteracted.current ||
+            motion.matches ||
+            document.hidden
+          )
+            return;
+          let started: number | null = null;
+          const ease = (progress: number) =>
+            progress * progress * (3 - 2 * progress);
+
+          function animate(now: number) {
+            if (disposed || hasInteracted.current) return;
+            started ??= now;
+            const elapsed = now - started;
+            // Reveal more of the clean finish, pause briefly, then settle near centre.
+            const next =
+              elapsed < 1200
+                ? 50 + 28 * ease(elapsed / 1200)
+                : elapsed < 1350
+                  ? 78
+                  : 78 - 22 * ease(Math.min((elapsed - 1350) / 1050, 1));
+            setPosition(next);
+            frameRef.current =
+              elapsed < 2400 ? requestAnimationFrame(animate) : null;
+          }
+          frameRef.current = requestAnimationFrame(animate);
+        });
+      },
+      { threshold: 0.5 },
+    );
+
+    const handleMotionChange = () => {
+      if (motion.matches) cancelDemo();
+    };
+    const handleVisibilityChange = () => {
+      if (document.hidden && demoPlayed.current) cancelDemo();
+    };
+    observer.observe(stage);
+    motion.addEventListener("change", handleMotionChange);
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+    return () => {
+      disposed = true;
+      observer.disconnect();
+      if (frameRef.current !== null) cancelAnimationFrame(frameRef.current);
+      motion.removeEventListener("change", handleMotionChange);
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+    };
+  }, []);
+
   // Keep horizontal touch dragging when the browser handles vertical panning.
   const touchGesture = useRef<{
     pointerId: number;
@@ -22,9 +104,13 @@ export function ComparisonSlider() {
   return (
     <div className="comparison">
       <div
+        ref={stageRef}
         className="comparison-stage"
+        onFocusCapture={cancelDemo}
+        onKeyDownCapture={cancelDemo}
         style={{ "--position": `${position}%` } as React.CSSProperties}
         onPointerDown={(event) => {
+          cancelDemo();
           if (event.pointerType !== "touch") return;
           touchGesture.current = {
             pointerId: event.pointerId,
@@ -90,9 +176,12 @@ export function ComparisonSlider() {
           min="0"
           max="100"
           value={position}
-          onChange={(event) => setPosition(Number(event.target.value))}
+          onChange={(event) => {
+            cancelDemo();
+            setPosition(Number(event.target.value));
+          }}
           aria-label="Compare before and after detailing images"
-          aria-valuetext={`${position}% after image visible`}
+          aria-valuetext={`${Math.round(position)}% after image visible`}
         />
       </div>
       <p className="comparison-hint">

@@ -12,15 +12,21 @@ APEX is my website concept for a **fictional Malaysian automotive detailing stud
 - Sample packages in Malaysian ringgit, FAQs, and studio information
 - An interactive before/after comparison with touch, mouse, and keyboard controls
 - Responsive navigation with keyboard focus and Escape support
-- WhatsApp links with prepared quote messages and a Maps link based on the configured address
+- A frontend-only quote form that prepares a WhatsApp draft for manual review and sending
+- General quote buttons that scroll to the form, plus direct WhatsApp and package-specific enquiry links
+- A Maps link based on the configured address
 
-This is a presentation demo, not an operating business. Business details, prices, reviews, and generated imagery are labelled as samples. The WhatsApp number and address are placeholders; quote links do not represent a real booking service. Search indexing remains disabled with `noindex, nofollow`.
+This is a presentation demo, not an operating business. Business details, prices, reviews, and generated imagery are labelled as samples. The address is a placeholder. The WhatsApp number is my own, so quote messages reach me as the site's designer, not a detailing studio; quote links do not represent a real booking service. Search indexing remains disabled with `noindex, nofollow`.
 
 ## How I approached it
 
-I brought APEX from an idea to a working demo with help from Codex. I guided the direction, gathered feedback, reviewed the design, and tested it on my laptop and Xiaomi 12T Pro. Codex handled the implementation and assisted with design, generated imagery, and technical checks. The [case study](docs/case-study.md) tells the story of that collaboration and the mobile scrolling issue we worked through.
+I brought APEX from an idea to a working demo with help from Codex. I guided the direction, gathered feedback, reviewed the design, and tested it on my laptop and Xiaomi 12T Pro. Codex handled the implementation and assisted with design, generated imagery, and technical checks. Later, Claude Code helped me organise the repository: a `develop` branch with protected branches, automatic checks on pull requests, and versioned releases. The [case study](docs/case-study.md) follows that collaboration, from the mobile scrolling fix to the quote form and later UI refinements.
 
-The site uses Next.js 16 App Router, React 19, TypeScript, CSS, and local images served through `next/image`. It is hosted on Netlify with automatic deployment from GitHub. There is no backend, booking system, or analytics integration.
+The site uses Next.js 16 App Router, React 19, TypeScript, CSS, and local images served through `next/image`. It is hosted on Netlify from the `main` branch. There is no backend, booking system, or analytics integration.
+
+## How changes reach the live site
+
+Each change gets its own branch and pull request into `develop`. GitHub Actions runs the type check, formatting check, and production build on every pull request. When a set of changes is ready, I merge `develop` into `main`, tag a version under [Releases](https://github.com/Jrl1213/apex-auto-detail/releases), and publish it on Netlify. Both `main` and `develop` only accept changes through pull requests.
 
 ## Run locally
 
