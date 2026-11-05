@@ -31,7 +31,8 @@ export default function Home() {
             src="/images/hero.png"
             alt="Dark grey sedan in a professional detailing studio"
             fill
-            priority
+            preload
+            fetchPriority="high"
             sizes="100vw"
             className="hero-image"
           />
@@ -62,7 +63,7 @@ export default function Home() {
             <span>{business.locality}</span>
             <span className="hero-bottom-rule" />
             <span>By appointment</span>
-            <a href="#services" aria-label="Scroll to services">
+            <a href="#services">
               Explore what we do <span aria-hidden="true">↓</span>
             </a>
           </div>
