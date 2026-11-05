@@ -1657,3 +1657,58 @@ h3 {
     margin-top: 20px;
   }
 }
+
+/* Floating WhatsApp button. Hidden over the hero, contact section and footer (see whatsapp-bubble.tsx). */
+.whatsapp-bubble {
+  position: fixed;
+  z-index: 30;
+  right: calc(24px + env(safe-area-inset-right));
+  bottom: calc(24px + env(safe-area-inset-bottom));
+  width: 58px;
+  height: 58px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #25d366;
+  color: #fff;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.28);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px) scale(0.9);
+  transition:
+    opacity var(--duration-feedback) var(--ease-refined),
+    transform var(--duration-feedback) var(--ease-refined),
+    visibility 0s linear var(--duration-feedback);
+}
+.whatsapp-bubble.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition-delay: 0s;
+}
+.whatsapp-bubble svg {
+  width: 30px;
+  height: 30px;
+  fill: currentColor;
+}
+.whatsapp-bubble:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+@media (hover: hover) and (pointer: fine) {
+  .whatsapp-bubble.is-visible:hover {
+    transform: translateY(-2px);
+  }
+}
+@media (max-width: 600px) {
+  .whatsapp-bubble {
+    right: calc(16px + env(safe-area-inset-right));
+    bottom: calc(16px + env(safe-area-inset-bottom));
+    width: 54px;
+    height: 54px;
+  }
+  .whatsapp-bubble svg {
+    width: 28px;
+    height: 28px;
+  }
+}

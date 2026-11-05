@@ -4,6 +4,7 @@ import { ComparisonSlider } from "@/components/comparison-slider";
 import { SiteHeader } from "@/components/site-header";
 import { ServiceIcon } from "@/components/service-icon";
 import { QuoteForm } from "@/components/quote-form";
+import { WhatsAppBubble } from "@/components/whatsapp-bubble";
 import {
   business,
   directionsUrl,
@@ -440,6 +441,7 @@ export default function Home() {
           <span>Fictional business details and imagery for presentation.</span>
         </div>
       </footer>
+      <WhatsAppBubble />
     </>
   );
 }
