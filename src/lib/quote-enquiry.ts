@@ -1,4 +1,4 @@
-import { services } from "@/config/business";
+import { business, services } from "@/config/business";
 
 export const undecidedService = "Not sure yet — help me choose";
 export const quoteConcerns = [
@@ -45,7 +45,7 @@ export function validateQuoteEnquiry(enquiry: QuoteEnquiry): QuoteErrors {
 
 export function buildQuoteEnquiryMessage(enquiry: QuoteEnquiry) {
   return [
-    "Hi APEX! I'd like to get a quote.",
+    `Hi ${business.shortName}! I'd like to get a quote.`,
     "",
     `Car: ${enquiry.car.trim()}`,
     `Service: ${enquiry.service}`,

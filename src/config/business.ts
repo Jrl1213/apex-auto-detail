@@ -1,9 +1,15 @@
-/** Replace the sample details here before using this site for a real studio. */
+/**
+ * Replace the sample details here before using this site for a real studio.
+ * The name, logo words, page description and WhatsApp messages all come from here.
+ */
 export const business = {
   name: "APEX Auto Detail",
-  shortName: "APEX",
+  shortName: "APEX", // Used in the logo, "Why APEX" and the WhatsApp greetings.
+  brandLine: "Auto Detail", // Small words under the logo.
   descriptor: "Automotive detailing studio",
   locality: "Petaling Jaya, Selangor",
+  description:
+    "A premium automotive detailing studio demo in Petaling Jaya. Explore exterior and interior detailing, paint correction and ceramic coating packages.",
   address:
     "Unit 12, Jalan Contoh 3, Sample Industrial Park, 46000 Petaling Jaya, Selangor",
   addressNote: "Fictional sample address — replace before launch.",
@@ -19,7 +25,7 @@ export const business = {
 
 export function quoteMessage(service = "") {
   return [
-    "Hi APEX, I'd like to get a detailing quote.",
+    `Hi ${business.shortName}, I'd like to get a detailing quote.`,
     "",
     "Car model:",
     `Service interested in: ${service}`,
@@ -30,6 +36,11 @@ export function quoteMessage(service = "") {
 export function whatsAppUrl(service = "") {
   return whatsAppMessageUrl(quoteMessage(service));
 }
+
+/** For general "chat with us" links, where no service has been chosen yet. */
+export const chatMessage = `Hi ${business.shortName}! I found your website and have a question about your detailing services.`;
+
+export const whatsAppChatUrl = whatsAppMessageUrl(chatMessage);
 
 export function whatsAppMessageUrl(message: string) {
   return `https://wa.me/${business.whatsAppNumber}?text=${encodeURIComponent(message)}`;
