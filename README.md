@@ -28,6 +28,17 @@ The site uses Next.js 16 App Router, React 19, TypeScript, CSS, and local images
 
 Each change gets its own branch and pull request into `develop`. GitHub Actions runs the type check, formatting check, and production build on every pull request. When a set of changes is ready, I merge `develop` into `main`, tag a version under [Releases](https://github.com/Jrl1213/apex-auto-detail/releases), and publish it on Netlify. Both `main` and `develop` only accept changes through pull requests.
 
+## Lighthouse scores
+
+I checked the live site with Lighthouse 13.6 on 5 November 2026 (two runs each; Performance varies a little between runs):
+
+|         | Performance | Accessibility | Best Practices | SEO |
+| ------- | ----------- | ------------- | -------------- | --- |
+| Mobile  | 97–98       | 100           | 100            | 63  |
+| Desktop | 96–98       | 100           | 100            | 63  |
+
+SEO is lower on purpose: the demo tells search engines not to index it. Before releasing v1.2.0, the check found small bronze text with too little contrast and link labels that did not match their visible text, which I fixed in [#9](https://github.com/Jrl1213/apex-auto-detail/pull/9).
+
 ## Run locally
 
 ```bash
