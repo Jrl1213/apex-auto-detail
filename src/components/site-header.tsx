@@ -2,13 +2,13 @@
 
 import { useEffect, useRef, useState } from "react";
 import { Brand } from "./brand";
-import { whatsAppChatUrl } from "@/config/business";
+import { business, whatsAppChatUrl } from "@/config/business";
 
 const links = [
   ["Services", "#services"],
   ["Packages", "#packages"],
   ["Results", "#results"],
-  ["Why APEX", "#about"],
+  [`Why ${business.shortName}`, "#about"],
   ["Contact", "#contact"],
 ] as const;
 
@@ -36,7 +36,7 @@ export function SiteHeader() {
         <a
           className="brand-link"
           href="#top"
-          aria-label="APEX Auto Detail, back to top"
+          aria-label={`${business.name}, back to top`}
           onClick={() => setOpen(false)}
         >
           <Brand />

@@ -4,8 +4,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: `${business.name} | Premium Car Detailing in ${business.locality}`,
-  description:
-    "A premium automotive detailing studio demo in Petaling Jaya. Explore exterior and interior detailing, paint correction and ceramic coating packages.",
+  description: business.description,
   robots: { index: false, follow: false }, // Demo business; remove when real details are supplied.
 };
 
