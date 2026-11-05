@@ -12,6 +12,7 @@ import {
   reasons,
   reviews,
   services,
+  whatsAppChatUrl,
   whatsAppUrl,
 } from "@/config/business";
 
@@ -233,7 +234,7 @@ export default function Home() {
           <div className="container about-layout">
             <div className="about-intro">
               <p className="eyebrow eyebrow-light">
-                <span className="eyebrow-line" /> Why APEX
+                <span className="eyebrow-line" /> Why {business.shortName}
               </p>
               <h2 id="about-title">
                 Good detailing starts with <em>understanding your car.</em>
@@ -344,7 +345,7 @@ export default function Home() {
                   <span className="contact-label">WhatsApp</span>
                   <a
                     className="contact-phone"
-                    href={whatsAppUrl()}
+                    href={whatsAppChatUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -413,7 +414,7 @@ export default function Home() {
       <footer className="footer">
         <div className="container footer-main">
           <div>
-            <a href="#top" aria-label="APEX Auto Detail, back to top">
+            <a href="#top" aria-label={`${business.name}, back to top`}>
               <Brand light />
             </a>
             <p>Thoughtful automotive detailing in {business.locality}.</p>
@@ -422,12 +423,12 @@ export default function Home() {
             <a href="#services">Services</a>
             <a href="#packages">Packages</a>
             <a href="#results">Results</a>
-            <a href="#about">Why APEX</a>
+            <a href="#about">Why {business.shortName}</a>
             <a href="#contact">Contact</a>
           </div>
           <div className="footer-contact">
             <span>Let’s talk about your car.</span>
-            <a href={whatsAppUrl()} target="_blank" rel="noopener noreferrer">
+            <a href={whatsAppChatUrl} target="_blank" rel="noopener noreferrer">
               Start a conversation <Arrow diagonal />
             </a>
           </div>
