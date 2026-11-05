@@ -31,6 +31,12 @@ export function whatsAppUrl(service = "") {
   return whatsAppMessageUrl(quoteMessage(service));
 }
 
+/** For general "chat with us" links, where no service has been chosen yet. */
+export const chatMessage =
+  "Hi APEX! I found your website and have a question about your detailing services.";
+
+export const whatsAppChatUrl = whatsAppMessageUrl(chatMessage);
+
 export function whatsAppMessageUrl(message: string) {
   return `https://wa.me/${business.whatsAppNumber}?text=${encodeURIComponent(message)}`;
 }

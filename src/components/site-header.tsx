@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { Brand } from "./brand";
-import { whatsAppUrl } from "@/config/business";
+import { whatsAppChatUrl } from "@/config/business";
 
 const links = [
   ["Services", "#services"],
@@ -85,7 +85,7 @@ export function SiteHeader() {
         </a>
         <a
           className="mobile-whatsapp"
-          href={whatsAppUrl()}
+          href={whatsAppChatUrl}
           target="_blank"
           rel="noopener noreferrer"
           onClick={() => setOpen(false)}

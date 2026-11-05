@@ -12,6 +12,7 @@ import {
   reasons,
   reviews,
   services,
+  whatsAppChatUrl,
   whatsAppUrl,
 } from "@/config/business";
 
@@ -344,7 +345,7 @@ export default function Home() {
                   <span className="contact-label">WhatsApp</span>
                   <a
                     className="contact-phone"
-                    href={whatsAppUrl()}
+                    href={whatsAppChatUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -427,7 +428,7 @@ export default function Home() {
           </div>
           <div className="footer-contact">
             <span>Let’s talk about your car.</span>
-            <a href={whatsAppUrl()} target="_blank" rel="noopener noreferrer">
+            <a href={whatsAppChatUrl} target="_blank" rel="noopener noreferrer">
               Start a conversation <Arrow diagonal />
             </a>
           </div>
