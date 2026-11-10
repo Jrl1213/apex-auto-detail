@@ -37,7 +37,7 @@ The images above are browser screenshots at a phone viewport. I checked the gest
 
 ## Making the enquiry easier
 
-I chose a short quote form inside the existing Contact section. It asks for a car make and model and a service, with optional space for the main concern and anything else the visitor wants to explain. Someone who is unsure can ask for help choosing.
+I chose a short quote form inside the existing Contact section. It asks for a car make and model and a service, with optional space for a preferred date, the main concern, and anything else the visitor wants to explain. Someone who is unsure can ask for help choosing.
 
 The form prepares a WhatsApp draft. Visitors review and send the message themselves; the website does not store their enquiry or send it automatically. Keeping that distinction clear mattered to me, especially in a fictional demo.
 
@@ -53,11 +53,13 @@ The next pass focused on balanced heading wrapping, cleaner form borders and spa
 
 A later round with Codex made the before/after slider easier to discover. When it first scrolls into view, the divider moves once on its own to show that it can be dragged, then settles near the centre. It stops as soon as the visitor touches, clicks, or focuses it, and it does not play for visitors who have asked their device to reduce motion. The same round refined button and card hover effects so they only appear on devices with a mouse, and made navigation links at least 44 pixels tall for easier tapping.
 
+In November 2026 I ran my own QA pass on the live site and listed six things that looked off. Some turned out to be deliberate, so I asked Claude Code to check each one in the code before changing anything. The fixes I chose went into version 1.3.0. The closing section already asked visitors for their preferred date, so the form now has an optional date field, with a note that the studio is closed on Sundays. The smallest labels, some only 8 to 9 pixels, became easier to read without changing the style. The FAQ now gives the same durations as the package cards. Testing on my Xiaomi turned up a few more: review text sat off to one side, the FAQ flashed blue when tapped, and the WhatsApp button could cover the slider's labels. Those were fixed in the same release.
+
 ## Working with AI
 
 I brought APEX from an idea to a working demo with help from Codex. I guided the direction, gathered feedback, reviewed the design, and tested the experience. Codex handled the implementation and assisted with design, imagery, and technical checks. My contribution was in shaping the project, checking the result, and deciding when it felt ready to share.
 
-In November 2026 I started working with Claude Code as well. It reviewed the project after I moved it into a folder with my notes, and helped me set up a safer workflow: a `develop` branch, protected `main` and `develop` branches, automatic checks on every pull request, and versioned releases. It also made the WhatsApp number change and updated these documents. I still review each pull request and test changes myself before merging.
+In November 2026 I started working with Claude Code as well. It reviewed the project after I moved it into a folder with my notes, and helped me set up a safer workflow: a `develop` branch, protected `main` and `develop` branches, automatic checks on every pull request, and versioned releases. It also made the WhatsApp number change and the fixes from my QA pass, and updated these documents. I still review each pull request and test changes myself before merging.
 
 ## Where it landed
 
@@ -65,6 +67,6 @@ I published APEX on Netlify, connected to its GitHub repository. Before release,
 
 The quote form and UI refinements are now live too. Codex checked form validation, message encoding, quote navigation, keyboard focus, reduced motion, and responsive layouts in the browser. I reviewed the updated live site. These checks help me assess the demo; I have not measured real customer enquiries or conversion results.
 
-I now tag each published version under the repository's Releases. Version 1.0.0 marks the first public demo; later versions add the slider demonstration, the refined hover effects, and my own WhatsApp number.
+I now tag each published version under the repository's Releases. Version 1.0.0 marks the first public demo; later versions add the slider demonstration, the refined hover effects, my own WhatsApp number, a link preview card and floating WhatsApp button (1.2.0), and the fixes from my QA pass (1.3.0).
 
 I am sharing APEX as a fictional portfolio demo. I have kept the prices, address, reviews, and generated visuals labelled as samples, with `noindex, nofollow` still in place. I am not presenting it as real customer work or claiming booking results or business performance.

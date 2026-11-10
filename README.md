@@ -12,7 +12,7 @@ APEX is my website concept for a **fictional Malaysian automotive detailing stud
 - Sample packages in Malaysian ringgit, FAQs, and studio information
 - An interactive before/after comparison with touch, mouse, and keyboard controls
 - Responsive navigation with keyboard focus and Escape support
-- A frontend-only quote form that prepares a WhatsApp draft for manual review and sending
+- A frontend-only quote form, with an optional preferred date, that prepares a WhatsApp draft for manual review and sending
 - General quote buttons that scroll to the form, plus direct WhatsApp and package-specific enquiry links
 - A Maps link based on the configured address
 
