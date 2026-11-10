@@ -30,12 +30,12 @@ Each change gets its own branch and pull request into `develop`. GitHub Actions 
 
 ## Lighthouse scores
 
-I checked the live site with Lighthouse 13.6 on 5 November 2026 (two runs each; Performance varies a little between runs):
+I checked version 1.3.0 with Lighthouse 13.6 on 10 November 2026, running a production build on my own laptop (two runs each; Performance varies a little between runs):
 
 |         | Performance | Accessibility | Best Practices | SEO |
 | ------- | ----------- | ------------- | -------------- | --- |
-| Mobile  | 97–98       | 100           | 100            | 63  |
-| Desktop | 96–98       | 100           | 100            | 63  |
+| Mobile  | 93–95       | 100           | 100            | 63  |
+| Desktop | 97–100      | 100           | 100            | 63  |
 
 SEO is lower on purpose: the demo tells search engines not to index it. Before releasing v1.2.0, the check found small bronze text with too little contrast and link labels that did not match their visible text, which I fixed in [#9](https://github.com/Jrl1213/apex-auto-detail/pull/9).
 
