@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { services, whatsAppMessageUrl } from "@/config/business";
 import {
   buildQuoteEnquiryMessage,
+  preferredDateHint,
   quoteConcerns,
   todayIso,
   undecidedService,
@@ -130,7 +131,7 @@ export function QuoteForm() {
           aria-describedby={`quote-date-hint${errors.date ? " quote-date-error" : ""}`}
         />
         <p className="quote-field-hint" id="quote-date-hint">
-          We&apos;ll confirm availability in our reply.
+          {preferredDateHint()}
         </p>
         {errors.date && (
           <p className="quote-error" id="quote-date-error" role="alert">

@@ -19,6 +19,18 @@ export type QuoteEnquiry = {
 
 export type QuoteErrors = Partial<Record<keyof QuoteEnquiry, string>>;
 
+/** Hint for the date field, built from the opening hours, e.g. "Closed on Sundays. …" */
+export function preferredDateHint() {
+  const closed = business.hours
+    .filter((entry) => entry.time === "Closed")
+    // "Sunday" -> "Sundays"; leaves other wording, like "Public holidays", as is.
+    .map((entry) => entry.days.replace(/day$/, "days"));
+  const confirm = "We'll confirm availability in our reply.";
+  return closed.length
+    ? `Closed on ${closed.join(" and ")}. ${confirm}`
+    : confirm;
+}
+
 /** Today's date as "YYYY-MM-DD" in the visitor's own time zone. */
 export function todayIso(now = new Date()) {
   const month = String(now.getMonth() + 1).padStart(2, "0");
