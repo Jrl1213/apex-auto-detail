@@ -73,3 +73,7 @@ I keep dependencies, build output, environment files, logs, and the local audit 
 Update business content in `src/config/business.ts`. The business name, logo words, page description and every WhatsApp message come from there, so a copy for another studio starts in that one file. Longer page copy, such as headings, is in `src/app/page.tsx`. The [service image prompts](docs/service-image-prompts.md) document the four generated service visuals.
 
 Before adapting the site for a real business, verify and replace the sample contact details, address, hours, prices, reviews, and imagery. Use licensed or permissioned customer material, update the disclosures and metadata, and remove `noindex, nofollow` only when the real details are ready.
+
+## Licence
+
+© 2026 Jarrell. All rights reserved. The code is public so it can be read as a portfolio piece; it is not open source. See [LICENSE](LICENSE).
