@@ -2,6 +2,10 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+// Static imports let Next.js build a tiny blurred preview, shown while the
+// full image loads instead of a plain grey box.
+import resultBefore from "../../public/images/result-before.png";
+import resultAfter from "../../public/images/result-after.png";
 
 export function ComparisonSlider() {
   const [position, setPosition] = useState(50);
@@ -148,7 +152,8 @@ export function ComparisonSlider() {
         onPointerCancel={endTouchGesture}
       >
         <Image
-          src="/images/result-before.png"
+          src={resultBefore}
+          placeholder="blur"
           alt="Demo image of a grey car before detailing, with a duller and dirtier finish"
           fill
           sizes="(max-width: 900px) 100vw, 65vw"
@@ -156,7 +161,8 @@ export function ComparisonSlider() {
         />
         <div className="comparison-after">
           <Image
-            src="/images/result-after.png"
+            src={resultAfter}
+            placeholder="blur"
             alt="Demo image of a grey car after detailing, with a clean, glossy finish"
             fill
             sizes="(max-width: 900px) 100vw, 65vw"

@@ -5,7 +5,9 @@ import { business, whatsAppChatUrl } from "@/config/business";
 
 // The bubble hides where WhatsApp links are already on screen (hero, contact
 // and footer), so it never covers the quote form or doubles up a button.
-const hideOver = [".hero", "#contact", ".footer"];
+// It also hides over the before/after slider, so it never covers the slider's
+// labels or gets in the way of dragging on a phone.
+const hideOver = [".hero", ".comparison-stage", "#contact", ".footer"];
 
 export function WhatsAppBubble() {
   const [visible, setVisible] = useState(false);
