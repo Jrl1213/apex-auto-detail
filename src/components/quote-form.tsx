@@ -4,7 +4,9 @@ import { useEffect, useState } from "react";
 import { services, whatsAppMessageUrl } from "@/config/business";
 import {
   buildQuoteEnquiryMessage,
+  preferredDateHint,
   quoteConcerns,
+  todayIso,
   undecidedService,
   validateQuoteEnquiry,
   type QuoteEnquiry,
@@ -15,9 +17,14 @@ export function QuoteForm() {
   const [ready, setReady] = useState(false);
   const [errors, setErrors] = useState<QuoteErrors>({});
   const [draftUrl, setDraftUrl] = useState("");
+  // Set after hydration, because the page is pre-rendered and "today" depends on the visitor.
+  const [minDate, setMinDate] = useState<string>();
 
   // Keep the browser from submitting field values as a GET before hydration.
-  useEffect(() => setReady(true), []);
+  useEffect(() => {
+    setReady(true);
+    setMinDate(todayIso());
+  }, []);
 
   function submitQuote(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -25,6 +32,7 @@ export function QuoteForm() {
     const enquiry: QuoteEnquiry = {
       car: String(data.get("car") ?? ""),
       service: String(data.get("service") ?? ""),
+      date: String(data.get("date") ?? ""),
       concern: String(data.get("concern") ?? ""),
       details: String(data.get("details") ?? ""),
     };
@@ -107,6 +115,27 @@ export function QuoteForm() {
         {errors.service && (
           <p className="quote-error" id="quote-service-error" role="alert">
             {errors.service}
+          </p>
+        )}
+      </div>
+      <div className="quote-field">
+        <label htmlFor="quote-date">
+          Preferred date <span>(optional)</span>
+        </label>
+        <input
+          id="quote-date"
+          name="date"
+          type="date"
+          min={minDate}
+          aria-invalid={Boolean(errors.date)}
+          aria-describedby={`quote-date-hint${errors.date ? " quote-date-error" : ""}`}
+        />
+        <p className="quote-field-hint" id="quote-date-hint">
+          {preferredDateHint()}
+        </p>
+        {errors.date && (
+          <p className="quote-error" id="quote-date-error" role="alert">
+            {errors.date}
           </p>
         )}
       </div>

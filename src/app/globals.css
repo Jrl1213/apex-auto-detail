@@ -37,6 +37,8 @@ a,
 summary,
 input {
   outline-offset: 4px;
+  /* No blue flash on tap in mobile browsers; keyboard focus keeps the gold outline. */
+  -webkit-tap-highlight-color: transparent;
 }
 a:focus-visible,
 button:focus-visible,
@@ -198,8 +200,8 @@ h3 {
   font-weight: 800;
 }
 .brand-words small {
-  font-size: 0.52rem;
-  letter-spacing: 0.34em;
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
   font-weight: 700;
   white-space: nowrap;
 }
@@ -226,7 +228,7 @@ h3 {
   gap: 28px;
   border: 1px solid rgba(255, 255, 255, 0.7);
   white-space: nowrap;
-  font-size: 0.67rem;
+  font-size: 0.72rem;
 }
 .button-header:hover {
   background: #fff;
@@ -391,7 +393,7 @@ h3 {
   padding: 5px 7px;
   background: rgba(14, 17, 15, 0.82);
   color: #f6f3ec;
-  font-size: 0.57rem;
+  font-size: 0.7rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -478,7 +480,7 @@ h3 {
   background: rgba(14, 17, 15, 0.8);
   padding: 9px 12px;
   color: #fff;
-  font-size: 0.65rem;
+  font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.16em;
   pointer-events: none;
@@ -548,7 +550,7 @@ h3 {
   text-align: right;
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  font-size: 0.66rem;
+  font-size: 0.72rem;
   color: #9ca69e;
 }
 .comparison-hint span {
@@ -601,7 +603,7 @@ h3 {
   justify-content: space-between;
   align-items: center;
   color: #80664a;
-  font-size: 0.67rem;
+  font-size: 0.72rem;
   text-transform: uppercase;
   letter-spacing: 0.14em;
   font-weight: 700;
@@ -802,14 +804,15 @@ h3 {
   display: flex;
   flex-direction: column;
 }
-.quote-mark {
-  font-family: Georgia, serif;
-  font-size: 4rem;
-  line-height: 0.7;
+.review-stars {
+  font-size: 0.95rem;
+  line-height: 1;
+  letter-spacing: 0.2em;
   color: var(--accent-dark);
   margin-bottom: 24px;
 }
 .review-card blockquote {
+  margin: 0; /* Browsers indent blockquotes by default. */
   font-family: Georgia, serif;
   font-size: 1.16rem;
   line-height: 1.5;
@@ -875,7 +878,7 @@ h3 {
   display: block;
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  font-size: 0.68rem;
+  font-size: 0.72rem;
   color: #80664a;
   font-weight: 700;
   margin-bottom: 14px;
@@ -1097,6 +1100,9 @@ h3 {
   color: #7a644e;
   text-align: right;
 }
+.faq-list details[open] summary {
+  color: #80664a;
+}
 .faq-list details[open] .faq-plus {
   transform: rotate(45deg);
 }
@@ -1182,7 +1188,7 @@ h3 {
   justify-content: space-between;
   gap: 20px;
   color: #7e887e;
-  font-size: 0.69rem;
+  font-size: 0.75rem;
 }
 @media (max-width: 1100px) {
   .desktop-nav {
@@ -1372,7 +1378,7 @@ h3 {
   }
   .eyebrow {
     margin-bottom: 22px;
-    font-size: 0.65rem;
+    font-size: 0.7rem;
   }
   h2 {
     font-size: clamp(2.8rem, 11vw, 4rem);
@@ -1404,12 +1410,12 @@ h3 {
     min-height: 51px;
     padding-inline: 16px;
     gap: 22px;
-    font-size: 0.67rem;
+    font-size: 0.72rem;
   }
   .hero-bottom {
     bottom: calc(23px + env(safe-area-inset-bottom));
     gap: 9px;
-    font-size: 0.6rem;
+    font-size: 0.7rem;
     letter-spacing: 0.04em;
   }
   .hero-bottom-rule {
@@ -1462,7 +1468,7 @@ h3 {
   .comparison-label {
     bottom: 10px;
     padding: 7px;
-    font-size: 0.55rem;
+    font-size: 0.7rem;
   }
   .before-label {
     right: 10px;
