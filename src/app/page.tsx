@@ -284,8 +284,8 @@ export default function Home() {
             <div className="reviews-grid">
               {reviews.map((review) => (
                 <figure className="review-card" key={review.name}>
-                  <div className="quote-mark" aria-hidden="true">
-                    “
+                  <div className="review-stars" aria-hidden="true">
+                    ★★★★★
                   </div>
                   <blockquote>{review.quote}</blockquote>
                   <figcaption>

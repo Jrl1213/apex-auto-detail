@@ -180,7 +180,7 @@ export const reviews = [
 export const faqs = [
   {
     q: "How long does a detail take?",
-    a: "An Essential Detail is usually completed within half a day. Full Detail and coating work can take one to three days depending on the vehicle and the preparation needed. We confirm timing with your quote.",
+    a: "An Essential Detail is usually completed within half a day. A Full Detail typically takes 1–2 days, and Ceramic Protection 2–3 days, depending on the vehicle and the preparation needed. We confirm timing with your quote.",
   },
   {
     q: "Do I need an appointment?",
