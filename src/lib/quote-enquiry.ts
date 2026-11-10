@@ -12,11 +12,41 @@ export const quoteConcerns = [
 export type QuoteEnquiry = {
   car: string;
   service: string;
+  date: string; // "YYYY-MM-DD" from the date picker, or "" when skipped.
   concern: string;
   details: string;
 };
 
 export type QuoteErrors = Partial<Record<keyof QuoteEnquiry, string>>;
+
+/** Today's date as "YYYY-MM-DD" in the visitor's own time zone. */
+export function todayIso(now = new Date()) {
+  const month = String(now.getMonth() + 1).padStart(2, "0");
+  const day = String(now.getDate()).padStart(2, "0");
+  return `${now.getFullYear()}-${month}-${day}`;
+}
+
+function parseIsoDate(value: string) {
+  const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(value);
+  if (!match) return null;
+  const [year, month, day] = match.slice(1).map(Number);
+  const date = new Date(year, month - 1, day);
+  // Rejects dates like 2026-02-31, which Date would roll into March.
+  return date.getMonth() === month - 1 && date.getDate() === day ? date : null;
+}
+
+/** "2026-11-15" -> "Sun, 15 Nov 2026" */
+export function formatPreferredDate(value: string) {
+  const date = parseIsoDate(value);
+  return date
+    ? date.toLocaleDateString("en-GB", {
+        weekday: "short",
+        day: "numeric",
+        month: "short",
+        year: "numeric",
+      })
+    : value;
+}
 
 export function validateQuoteEnquiry(enquiry: QuoteEnquiry): QuoteErrors {
   const errors: QuoteErrors = {};
@@ -30,6 +60,14 @@ export function validateQuoteEnquiry(enquiry: QuoteEnquiry): QuoteErrors {
     !services.some((service) => service.name === enquiry.service)
   ) {
     errors.service = "Please choose a service, or let us help you choose.";
+  }
+  if (enquiry.date) {
+    // ISO dates compare correctly as plain strings.
+    if (!parseIsoDate(enquiry.date)) {
+      errors.date = "Please choose a valid date, or leave it blank.";
+    } else if (enquiry.date < todayIso()) {
+      errors.date = "Please choose today or a later date.";
+    }
   }
   if (
     enquiry.concern &&
@@ -49,6 +87,9 @@ export function buildQuoteEnquiryMessage(enquiry: QuoteEnquiry) {
     "",
     `Car: ${enquiry.car.trim()}`,
     `Service: ${enquiry.service}`,
+    ...(enquiry.date
+      ? [`Preferred date: ${formatPreferredDate(enquiry.date)}`]
+      : []),
     ...(enquiry.concern ? [`Main concern: ${enquiry.concern}`] : []),
     ...(enquiry.details.trim()
       ? [`Additional details: ${enquiry.details.trim()}`]
